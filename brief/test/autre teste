@@ -1,7 +1,7 @@
-#include <stdio.h>
+#include<stdio.h>
 #include <stdlib.h>
-#include <string.h>
-#include <windows.h>
+#include<string.h>
+#include<windows.h>
 
 typedef struct {
     char CIN[30];
@@ -12,24 +12,24 @@ typedef struct {
 
 
 infoclients info[100];
-int n = 0;
+int i = 0;
 
 void menu ();
 void ajoutercompte(){
-    printf("CIN : ");
-    scanf("%s",info[n].CIN);
-    printf("Nom : ");
-    scanf("%s",info[n].NOM);
-    printf("Prenom : ");
-    scanf("%s",info[n].prenom);
-    printf("Montant : ");
-    scanf("%lf",&info[n].Montant); 
+    printf("CIN \n");
+    scanf("%s",info[0].CIN);
+    printf("Nom \n");
+    scanf("%s",info[0].NOM);
+    printf("Prenom \n");
+    scanf("%s",info[0].prenom);
+    printf("Montant \n");
+    scanf("%lf",&info[0].Montant); 
 
-    printf("%s  ",info[n].CIN);
-    printf("%s  ",info[n].NOM);
-    printf("%s  ",info[n].prenom);
-    printf("%lf  ",info[n].Montant);
-    n++;
+    printf("%s  ",info[0].CIN);
+    printf("%s  ",info[0].NOM);
+    printf("%s  ",info[0].prenom);
+    printf("%lf  ",info[0].Montant);
+
      menu();
      
      }
@@ -40,24 +40,21 @@ void ajouterpluscompte(){
        scanf("%d",&nombre);
        for(i=0;i<nombre;i++){
        printf("CIN \n");
-       scanf("%s",info[n].CIN);
+       scanf("%s",info[i].CIN);
        printf("Nom \n");
-       scanf("%s",info[n].NOM);
+       scanf("%s",info[i].NOM);
        printf("Prenom \n");
-       scanf("%s",info[n].prenom);
+       scanf("%s",info[i].prenom);
        printf("Montant \n");
-       scanf("%lf",&info[n].Montant);
-       n++;  
-       }
-       system("cls");                  
+       scanf("%lf",&info[i].Montant);}
+       system("cls");                    
       menu() ;   
-}
-            
+                }
 int rechercheparcin(){
     char cin[30] ;
     printf("entrer le cin :");
     scanf("%s",cin);
-    for(int i=0; i<n; i++){
+    for(int i=0; i<100; i++){
         if(strcmp(info[i].CIN,cin)==0)
         
     return i ;
@@ -114,15 +111,17 @@ void operation(){
     }
 }
 void affichage(){
-	printf("affichez les comptes\n");
-	for(int i=0 ; i<n ; i++ ){
+	int n;
+	printf("affichez le comptes\n");
+	for( i=0; i<n; i++ ){
 		printf(".................................. \n");
+        printf("                                     ");
 		printf("CIN  :%s\n",info[i].CIN);
 		printf("Nom  :%s\n",info[i].NOM);
 		printf("Prenom :%s\n",info[i].prenom); 
 		printf("Montant :%f\n",info[i].Montant);
-		printf("...................................\n");
-    }
+        printf("                                      ");
+		printf("...................................\n");}
    }
 
 void menu (){
@@ -159,12 +158,11 @@ void menu (){
         affichage();
         break ;
         case 5 :
-        printf("fidelisation "); 
+        printf("5"); 
         break ;
         case 6 :
-        exit(0);
         system("cls");
-        
+        return 0 ; 
         break ; 
         default :
         printf("verifier votre choix ");
